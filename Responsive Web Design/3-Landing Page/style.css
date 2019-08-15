@@ -1,0 +1,144 @@
+body {
+    background-color: #c7c6c6;
+    color: #423f3f;
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+    border-radius: 2px;
+    position: relative;
+}
+
+#main {
+    margin-top: 30px;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #352e2e;
+    border-radius: 5px;
+}
+
+nav a {
+    font-size: 20pt;
+    text-decoration: none;
+    border: 1px solid;
+    border-color: #8e8ca5;
+    border-radius: 4px;
+    background-color: #7e7d8c;
+    color: #e6e6e6;
+    padding: 5px;
+}
+
+#header {
+    font-size: 48pt;
+    text-align: center;
+    margin: auto;
+}
+
+#header-img {
+    max-width: 500px;
+    height: auto;
+    margin: auto;
+    display: block;
+    margin-top: 80px;
+}
+
+#video {
+    display: block;
+    margin: auto;
+    border-radius: 5px;
+}
+
+input {
+    display: block;
+    font-size: 14pt;
+    width: 350px;
+    margin: auto;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+button {
+    display: block;
+    margin: auto;
+    border: solid;
+    border-color: #ffffff;
+    border-radius: 5px;
+    width: 200px;
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+    margin-top: 30px;
+    text-decoration: none;
+    font-size: 12pt;
+}
+
+#products {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+.product {
+    width: 300px;
+    background-color: #ffffff;
+    min-height: 200px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.product h2 {
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.product h3 {
+    text-align: center;
+}
+
+.product button {
+    display: block;
+    margin: auto;
+    border: solid;
+    border-radius: 5px;
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 30px;
+    text-decoration: none;
+    font-size: 18pt;
+}
+
+#submit {
+    display: block;
+    margin: auto;
+    border: solid;
+    border-color: #ffffff;
+    border-radius: 5px;
+    width: 200px;
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+    margin-top: 10px;
+    text-decoration: none;
+    font-size: 12pt;
+}
+
+form {
+    background-color: #000000;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+    main {
+        width: 500px;
+    }
+}

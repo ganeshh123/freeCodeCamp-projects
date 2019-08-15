@@ -21,11 +21,11 @@ body,
     font-size: 0.8em;
 }
 
-img {
-    max-width: 100%;
+#header-img {
+    max-width: 300px;
+    height: auto;
     margin: auto;
     display: block;
-    border-radius: 5px;
 }
 
 a {
