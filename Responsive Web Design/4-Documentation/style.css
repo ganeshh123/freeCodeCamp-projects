@@ -1,0 +1,112 @@
+@media only screen and (min-width: 500px) {
+    body {
+        background-color: #57cdda;
+        color: #ffffff;
+        display: flex;
+        justify-items: center;
+        flex-direction: row;
+        max-width: 1000px;
+        margin: auto;
+        justify-content: space-around;
+        align-items: flex-start;
+        margin-top: 20px;
+        font-size: 14pt;
+        -webkit-text-stroke-width: 0.05px;
+        -webkit-text-stroke-color: black;
+    }
+    header,
+    h1,
+    h2 {
+        color: #bf4aa8;
+    }
+    main {
+        max-width: 70%;
+        margin-bottom: 20px;
+    }
+    nav {
+        max-width: 25%;
+    }
+    nav header {
+        text-align: center;
+    }
+    nav a {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        background-color: #bf4aa8;
+        color: #ffffff;
+        border-style: solid;
+        border-color: #bf4aa8;
+        border-radius: 4px;
+        margin: 5px 2px 5px 2px;
+        padding: 5px;
+    }
+    header {
+        font-size: 18pt;
+    }
+    h1 {
+        font-size: 32pt;
+    }
+    code {
+        background-color: #4a5561;
+    }
+    ;
+}
+
+@media only screen and (max-width: 500px) {
+    body {
+        background-color: #57cdda;
+        color: #ffffff;
+        display: flex;
+        justify-items: center;
+        flex-direction: column;
+        max-width: 1000px;
+        margin: auto;
+        justify-content: space-around;
+        align-items: flex-start;
+        margin-top: 20px;
+        font-size: 14pt;
+        -webkit-text-stroke-width: 0.05px;
+        -webkit-text-stroke-color: black;
+    }
+    header,
+    h1,
+    h2 {
+        color: #bf4aa8;
+    }
+    main {
+        max-width: 80%;
+        margin-bottom: 20px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    nav {
+        max-width: 80%;
+        margin: auto;
+    }
+    nav header {
+        text-align: center;
+    }
+    nav a {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        background-color: #bf4aa8;
+        color: #ffffff;
+        border-style: solid;
+        border-color: #bf4aa8;
+        border-radius: 4px;
+        margin: 5px 2px 5px 2px;
+        padding: 5px;
+    }
+    header {
+        font-size: 18pt;
+    }
+    h1 {
+        font-size: 32pt;
+    }
+    code {
+        background-color: #4a5561;
+    }
+    ;
+}

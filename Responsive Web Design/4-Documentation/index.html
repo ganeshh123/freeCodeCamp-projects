@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    <title>JavaScript</title>
+</head>
+
+<body>
+    <nav id="navbar">
+        <header>Contents</header>
+        <a class="nav-link" href="#introduction">Introduction</a>
+        <a class="nav-link" href="#uses">Uses</a>
+        <a class="nav-link" href="#prior_knowledge">Prior Knowledge</a>
+        <a class="nav-link" href="#javascript_and_java">JavaScript and Java</a>
+        <a class="nav-link" href="#data_types">Data Types</a>
+        <a class="nav-link" href="#syntax">Syntax</a>
+        <a class="nav-link" href="#functions">Functions</a>
+    </nav>
+    <main id="main-doc">
+        <h1>JavaScript</h1>
+        <section id="introduction" class="main-section">
+            <header>Introduction</header>
+            <p>JavaScript is a cross-platform, object-oriented scripting language. It is a small and lightweight language. Inside a host environment (for example, a web browser), JavaScript can be connected to the objects of its environment to provide programmatic
+                control over them.</p>
+            <p>JavaScript contains a standard library of objects, such as Array, Date, and Math, and a core set of language elements such as operators, control structures, and statements.</p>
+        </section>
+        <section id="uses" class="main-section">
+            <header>Uses</header>
+            <p>It can interact with user behaviour, or browser driven events. These are some of its uses:</p>
+            <ul>
+                <li>Form Data Validation</li>
+                <li>Dynamic Style/Presentation Effects</li>
+                <li>Dynamic Content Creation/Inclusion</li>
+                <li>Data Acquisition</li>
+                <li>Browser Window Management</li>
+            </ul>
+            <p>There are 2 ways in which JavaScript can be inserted and executed in a webpage:</p>
+            <ol>
+                <li>JavaScript can be directly written into the HTML file between <code>&lt;script&gt;&lt;/script&gt;</code> tags <em>(current document only</em></li>
+                <li>External JavaScript files can be imported using <code>&lt;script src="fileName.JS"&gt;&lt;/script&gt;</code> in the head section</li>
+            </ol>
+        </section>
+        <section id="prior_knowledge" class="main-section">
+            <header>Prior Knowledge</header>
+            <p>You should know the following:</p>
+            <ul>
+                <li>A general understanding of the Internet and the World Wide Web (WWW).</li>
+                <li>Good working knowledge of HyperText Markup Language (HTML).</li>
+                <li>Some programming experience. If you are new to programming, try one of the tutorials linked on the main page about JavaScript.</li>
+            </ul>
+        </section>
+        <section id="javascript_and_java" class="main-section">
+            <header>JavaScript and Java</header>
+            <p>JavaScript and Java are similar in some ways but fundamentally different in some others. The JavaScript language resembles Java but does not have Java's static typing and strong type checking. JavaScript follows most Java expression syntax,
+                naming conventions and basic control-flow constructs which was the reason why it was renamed from LiveScript to JavaScript.</p>
+            <p>In contrast to Java's compile-time system of classes built by declarations, JavaScript supports a runtime system based on a small number of data types representing numeric, Boolean, and string values. JavaScript has a prototype-based object
+                model instead of the more common class-based object model. The prototype-based model provides dynamic inheritance; that is, what is inherited can vary for individual objects. JavaScript also supports functions without any special declarative
+                requirements. Functions can be properties of objects, executing as loosely typed methods.</p>
+            <p>JavaScript is a very free-form language compared to Java. You do not have to declare all variables, classes, and methods. You do not have to be concerned with whether methods are public, private, or protected, and you do not have to implement
+                interfaces. Variables, parameters, and function return types are not explicitly typed.</p>
+        </section>
+        <section id="data_types" class="main-section">
+            <header>Data Types</header>
+            <p>JavaScript Supports the following data types:</p>
+            <ul>
+                <li>6 Primitve Types</li>
+                <ol>
+                    <li>Boolean</li>
+                    <li>Null</li>
+                    <li>Undefined</li>
+                    <li>Number</li>
+                    <li>String</li>
+                    <li>Symbol</li>
+                </ol>
+                <li>Object</li>
+            </ul>
+        </section>
+        <section id="syntax" class="main-section">
+            <header>Syntax</header>
+            <ul>
+                <li>JavaScript uses C-style syntax</li>
+                <li>Primitive types, such as <strong>String</strong>s, <strong>int</strong>s, and <strong>boolean</strong>s can be loosely typed using the keyword <strong>var</strong>: <code>var variableName = value;</code></li>
+                <li>Code statements are ended with a semi-colon<code>;</code></li>
+                <li>Curly braces <code>{}</code> are used to group together sections of code</li>
+            </ul>
+        </section>
+        <section id="functions" class="main-section">
+            <header>Functions</header>
+            <p><strong>Functions</strong> <em>(known as methods in other languages</em> are ways of grouping together statements for logican execution and flow control:</p>
+            <ul>
+                <li>They are defined using the key word <strong>function</strong></li>
+                <li>They have a name, can take in arguments, and can return variables </li>
+                <li>Functions typically have the following syntax: <code>function functionName(arg1, arg2, arg3){ code }</code></li>
+                <li>Function syntax does not require semi-colons, only the code inside </li>
+                <li>The function is called in the following format <code>functionName(arg1, arg2)</code>, where the arguments are specified</li>
+                <li>The code inside the curly braces is then executed </li>
+            </ul>
+        </section>
+    </main>
+
+</body>
+
+</html>
