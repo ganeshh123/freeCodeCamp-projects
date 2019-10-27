@@ -110,6 +110,10 @@ function checkCashRegister(price, cash, cid) {
     }
     changeDue = parseFloat(changeDue).toFixed(2);
 
+    if (changeDue != 0.00) {
+        return { status: "INSUFFICIENT_FUNDS", change: [] };
+    }
+
 
     return { status: "OPEN", change: change };
 }
