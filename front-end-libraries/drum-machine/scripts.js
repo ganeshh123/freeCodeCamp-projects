@@ -59,6 +59,47 @@ let soundSet = [
     },
 ]
 
+let styles = {
+    app: {
+        width: '100%',
+        maxWidth: 600,
+        backgroundColor: '#EAEBEB',
+        padding: 10,
+        borderRadius: 5,
+        boxShadow: '0px 3px 15px rgba(0,0,0,0.2)'
+    },
+    first: {
+        flexDirection: 'row',
+    },
+    display: {
+        textAlign: 'center',
+        color: '#36393A',
+        textShadow: '0px 3px 15px rgba(0,0,0,0.2)'
+    },
+    second: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        flexDirection: 'row',
+        justifyContent: 'center'
+    },
+    drumPad: {
+        color: '#EAEBEB',
+        backgroundColor: '#36393A',
+        cursor: "pointer",
+        borderRadius: "5px",
+        fontSize: 32,
+        width: 'auto',
+        width: '20%',
+        textAlign: 'center',
+        marginLeft: 10,
+        marginRight: 10,
+        marginTop: 10,
+        marginBottom: 10,
+        padding: 10,
+        boxShadow: '0px 3px 15px rgba(0,0,0,0.2)'
+    },
+}
+
 class DrumPad extends React.Component {
 
     constructor(props) {
@@ -75,7 +116,12 @@ class DrumPad extends React.Component {
     render() {
 
         return (
-            <div class='drum-pad' id={this.sound.sound} onClick={this.playSound}>
+            <div 
+                class='drum-pad'
+                id={this.sound.sound}
+                onClick={this.playSound}
+                style={styles.drumPad}
+            >
                 <audio src={this.sound.source} class='clip' id={this.sound.key}/>
                 {this.sound.key}   
             </div>
@@ -92,9 +138,9 @@ class Display extends React.Component {
     render() {
         
         return (
-            <div id='display' >
-                {this.props.sound.sound}     
-            </div>
+            <h1 id='display' style={styles.display} >
+                {this.props.sound.sound}
+            </h1>
         )
     }
 }
@@ -119,11 +165,15 @@ class App extends React.Component {
     render() {
 
       return(
-        <div id='drum-machine'>
-            <Display sound={this.state.currentSound} />
-            {soundSet.map((sound) => {
-                return <DrumPad sound={sound} set={this.setSound} />
-            })}
+        <div id='drum-machine' style={styles.app}>
+            <div style={styles.first}>
+                <Display sound={this.state.currentSound} />
+            </div>
+            <div style={styles.second}>
+                {soundSet.map((sound) => {
+                    return <DrumPad sound={sound} set={this.setSound} />
+                })}
+            </div>
         </div>
       );
     }
