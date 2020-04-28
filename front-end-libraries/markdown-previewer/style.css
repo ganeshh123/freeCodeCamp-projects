@@ -1,0 +1,41 @@
+body, html{
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#container{
+    height: 85%;
+    background-color: rebeccapurple;
+    display: flex;
+}
+
+#header{
+    height: 10%;
+}
+
+#footer{
+    height: 5%;
+}
+
+#left, #right{
+    flex: 1
+}
+
+#left{
+    background-color: aquamarine;
+}
+
+#right{
+    background-color: coral;
+    overflow: auto;
+}
+
+#app{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+}
