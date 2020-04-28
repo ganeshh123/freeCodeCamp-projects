@@ -6,10 +6,8 @@ let styles = {
 }
 
 let placeholder = 
-`# Welcome to my React Markdown Previewer!
-
-## Write Markdown in here to preview
-
+`
+#### Write markdown in the box on the left to preview!
 `
 
 class TextEditor extends React.Component{
