@@ -13,7 +13,28 @@ class Adjuster extends React.Component{
     render(){
         return(
             <div class='adjuster'>
-                Hello
+                <a 
+                    id={this.props.type+'-decrement'}
+                    class="large waves-effect btn-floating"
+                    onClick={() => {
+                        this.props.adjust(this.props.type+'_length', -1)
+                    }}
+                >
+                    <i class="material-icons left">keyboard_arrow_down</i>
+                </a>
+                <div class='adjuster-info'>
+                    <h6 id={this.props.type+'-label'}>{this.props.type} length</h6>
+                    <h5 id={this.props.type+'-length'}>{this.props.length}</h5>
+                </div>
+                <a 
+                    id={this.props.type+'-increment'}
+                    class="large waves-effect btn-floating"
+                    onClick={() => {
+                        this.props.adjust(this.props.type+'_length', 1)
+                    }}
+                >
+                    <i class="material-icons left">keyboard_arrow_up</i>
+                </a>
             </div>
         )
     }
@@ -44,13 +65,15 @@ class App extends React.Component{
         mode: 'Session',
         break_length: 5,
         session_length: 25,
-        duration: 25*60,
+        duration: 60*60,
         minutes: '25',
         seconds: '00'
     }
 
     startTimer = (duration) => {
         var timer = duration, minutes, seconds;
+        let interval;
+
         minutes = parseInt(timer / 60, 10)
         seconds = parseInt(timer % 60, 10);
 
@@ -65,7 +88,9 @@ class App extends React.Component{
         if (--timer < 0) {
             timer = duration;
         }
-        setInterval(function () {
+
+        interval = setInterval(function () {
+
             minutes = parseInt(timer / 60, 10)
             seconds = parseInt(timer % 60, 10);
     
@@ -78,9 +103,19 @@ class App extends React.Component{
             })
     
             if (--timer < 0) {
-                timer = duration;
+                clearInterval(interval)
             }
         }.bind(this), 1000);
+    }
+
+    adjust = (type, value) => {
+        if(this.state[type] === 0 && value < 0){
+            return
+        }
+
+        this.setState({
+            [type]: this.state[type] + value
+        })
     }
 
 
@@ -101,8 +136,8 @@ class App extends React.Component{
                     <a id='reset' class="large waves-effect btn-floating"><i class="material-icons left">restore</i></a>
                 </div>
                 <div id='third'>
-                    <Adjuster length={this.state.session_length}/>
-                    <Adjuster length={this.state.break_length}/>
+                    <Adjuster type='session' length={this.state.session_length} adjust={this.adjust}/>
+                    <Adjuster type='break' length={this.state.break_length} adjust={this.adjust}/>
                 </div>
             </div>
         )
