@@ -61,60 +61,118 @@ class App extends React.Component{
         super(props)
     }
 
+    interval;
+
     state={
         mode: 'Session',
         break_length: 5,
         session_length: 25,
-        duration: 60*60,
+        duration: 25*60,
         minutes: '25',
-        seconds: '00'
+        seconds: '00',
+        status: 'Stopped'
     }
 
-    startTimer = (duration) => {
-        var timer = duration, minutes, seconds;
-        let interval;
+    startTimer = () => {
+        let timer = this.state.duration
 
-        minutes = parseInt(timer / 60, 10)
-        seconds = parseInt(timer % 60, 10);
+        let minutes = parseInt(timer / 60, 10)
+        let seconds = parseInt(timer % 60, 10);
 
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
         
         this.setState({
+            status: 'Running',
             minutes: minutes,
             seconds: seconds
         })
 
-        if (--timer < 0) {
-            timer = duration;
-        }
+        timer = timer - 1
 
-        interval = setInterval(function () {
+        this.interval = setInterval(function () {
+
+            if(this.state.status === 'Stopped'){
+                clearInterval(this.interval)
+            }
 
             minutes = parseInt(timer / 60, 10)
             seconds = parseInt(timer % 60, 10);
     
             minutes = minutes < 10 ? "0" + minutes : minutes;
             seconds = seconds < 10 ? "0" + seconds : seconds;
-            
+
             this.setState({
                 minutes: minutes,
                 seconds: seconds
             })
-    
-            if (--timer < 0) {
-                clearInterval(interval)
+
+            if (timer === 0) {
+                clearInterval(this.interval)
+                setTimeout(() => {
+                    if(this.state.mode === 'Session'){
+                        this.startBreak()
+                    }else{
+                        this.startSession()
+                    }
+                }, 10)
+            }else{
+                timer = timer -1
             }
+
         }.bind(this), 1000);
     }
 
     adjust = (type, value) => {
-        if(this.state[type] === 0 && value < 0){
+        if(this.state[type] === 1 && value < 0){
             return
         }
 
+        if(this.state[type] === 60 && value >0){
+            return
+        }
+
+        this.state[type] = this.state[type] + value
+        this.state.duration = this.state.session_length * 60
+
+        let mins = parseInt(this.state.duration / 60, 10)
+        let secs = parseInt(this.state.duration % 60, 10)
+
+        mins= mins < 10 ? "0" + mins : mins
+        secs = secs < 10 ? "0" + secs : secs
+
         this.setState({
-            [type]: this.state[type] + value
+            minutes: mins,
+            seconds: secs
+        })
+    }
+
+    startSession = () => {
+        this.setState({
+            mode: 'Session',
+            duration: this.state.session_length *60
+        })
+        this.startTimer()
+        this.forceUpdate()
+    }
+
+    startBreak = () => {
+        this.state.mode = 'Break'
+        this.state.duration = this.state.break_length * 60
+        this.forceUpdate()
+        this.startTimer()
+    }
+
+    reset = () => {
+        clearInterval(this.interval)
+        this.setState({
+            mode: 'Session',
+            break_length: 5,
+            session_length: 25,
+            duration: 25 * 60,
+            minutes: '25',
+            seconds: '00',
+            status: 'Stopped'
         })
     }
 
@@ -130,10 +188,16 @@ class App extends React.Component{
                         id='start_stop'
                         class="large waves-effect btn-floating"
                         onClick={() => {
-                            this.startTimer(this.state.duration)
+                            this.startSession()
                         }}
                     ><i class="material-icons left">play_arrow</i></a>
-                    <a id='reset' class="large waves-effect btn-floating"><i class="material-icons left">restore</i></a>
+                    <a 
+                        id='reset'
+                        class="large waves-effect btn-floating"
+                        onClick={() => {
+                            this.reset()
+                        }}
+                    ><i class="material-icons left">restore</i></a>
                 </div>
                 <div id='third'>
                     <Adjuster type='session' length={this.state.session_length} adjust={this.adjust}/>
