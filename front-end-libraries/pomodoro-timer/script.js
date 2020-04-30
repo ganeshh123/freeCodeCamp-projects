@@ -176,6 +176,20 @@ class App extends React.Component{
         })
     }
 
+    startStop = () => {
+        if(this.state.status === 'Stopped'){
+            this.startSession()
+        }
+        if(this.state.status === 'Paused'){
+            this.state.duration = (this.state.minutes * 60) + this.state.seconds
+            this.startTimer()
+        }
+        if(this.state.status === 'Running'){
+            this.state.status = 'Paused'
+            clearInterval(this.interval)
+        }
+    }
+
 
     render(){
         return(
@@ -188,7 +202,7 @@ class App extends React.Component{
                         id='start_stop'
                         class="large waves-effect btn-floating"
                         onClick={() => {
-                            this.startSession()
+                            this.startStop()
                         }}
                     ><i class="material-icons left">play_arrow</i></a>
                     <a 
