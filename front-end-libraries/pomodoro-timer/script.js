@@ -108,6 +108,7 @@ class App extends React.Component{
             })
 
             if (timer === 0) {
+                document.getElementById('beep').play()
                 clearInterval(this.interval)
                 setTimeout(() => {
                     if(this.state.mode === 'Session'){
@@ -115,7 +116,7 @@ class App extends React.Component{
                     }else{
                         this.startSession()
                     }
-                }, 10)
+                }, 100)
             }else{
                 timer = timer -1
             }
@@ -164,6 +165,8 @@ class App extends React.Component{
     }
 
     reset = () => {
+        document.getElementById('beep').pause();
+        document.getElementById('beep').currentTime = 0;
         clearInterval(this.interval)
         this.setState({
             mode: 'Session',
@@ -190,10 +193,10 @@ class App extends React.Component{
         }
     }
 
-
     render(){
         return(
             <div id='app'>
+                <audio id='beep' ref="audio_tag" src="https://goo.gl/65cBl1"/>
                 <div id='first'>
                     <Display mode={this.state.mode} mins={this.state.minutes} secs={this.state.seconds}/>
                 </div>
