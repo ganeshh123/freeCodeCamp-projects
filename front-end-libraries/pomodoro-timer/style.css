@@ -13,8 +13,21 @@ body, html{
     flex-direction: column;
 }
 
+video {
+    z-index: -1;
+    position: absolute;
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #3a3a3a;
+}
+
 body{
-    background-color: #36393A;
+   
 }
 
 #container{
@@ -46,12 +59,17 @@ body{
 }
 
 #app{
-    min-height: 480px;
-    min-width: 640px;
+    height: 90%;
+    width: 90%;
+    max-height: 500px;
+    max-width: 600px;
     display: flex;
     flex-direction: column;
-    background-color: wheat;
+    color: white;
     align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 #first{
