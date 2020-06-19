@@ -38,7 +38,7 @@ let drawBars = () => {
 
     let tooltip = d3.select('body').append('div')	
                     .attr('id', 'tooltip')				
-                    .style('display', 'none')
+                    .style('visibility', 'hidden')
 
     svg.selectAll('rect')
         .data(values)
@@ -63,14 +63,14 @@ let drawBars = () => {
         })
         .on('mouseover', (item) => {		
             tooltip.transition()
-                .style('display', 'inline')
+                .style('visibility', 'visible')
                 
             document.querySelector('#tooltip').setAttribute('data-date', item[0])
             document.querySelector('#tooltip').textContent = item[0]
         })
         .on('mouseout', (d) => {		
             tooltip.transition()
-                .style('display', 'none')					
+                .style('visibility', 'hidden')					
         })
 }
 
