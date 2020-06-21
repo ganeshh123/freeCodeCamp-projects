@@ -73,9 +73,9 @@ let drawPoints = () => {
                     .style('visibility', 'visible')
                 
                 if(item['Doping'] != ""){
-                    tooltip.text(item['Year'] + ' - ' + item['Name'] + ' - ' + item['Doping'])
+                    tooltip.text(item['Year'] + ' - ' + item['Name'] + ' - ' + item['Time'] + ' - ' + item['Doping'])
                 }else{
-                    tooltip.text(item['Year'] + ' - ' + item['Name'] + ' - ' + 'No Allegations')
+                    tooltip.text(item['Year'] + ' - ' + item['Name'] + ' - ' + item['Time'] + ' - ' + 'No Allegations')
                 }
                 
                 tooltip.attr('data-year', item['Year'])
