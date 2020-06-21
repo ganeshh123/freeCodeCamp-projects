@@ -63,9 +63,9 @@ let drawPoints = () => {
             })
             .attr('fill', (item) => {
                 if(item['URL'] === ""){
-                    return 'green'
+                    return 'lightgreen'
                 }else{
-                    return 'red'
+                    return 'orange'
                 }
             })
             .on('mouseover', (item) => {
@@ -90,6 +90,7 @@ let generateAxes = () => {
 
     xAxis = d3.axisBottom(xScale)
                 .tickFormat(d3.format('d'))
+                
 
     yAxis = d3.axisLeft(yScale)
                 .tickFormat(d3.timeFormat('%M:%S'))
