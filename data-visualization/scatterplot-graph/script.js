@@ -3,10 +3,9 @@ let req = new XMLHttpRequest()
 
 let values =[]
 
+let xScale
+let yScale
 
-
-let xAxisScale
-let yAxisScale
 let xAxis
 let yAxis
 
@@ -15,10 +14,11 @@ let height = 600
 let padding = 40
 
 let svg = d3.select('svg')
+let tooltip = d3.select('#tooltip')
 
 let generateScales = () => {
     
-    xAxisScale = d3.scaleLinear()
+    xScale = d3.scaleLinear()
                         .domain([d3.min(values, (item) => {
                             return item['Year']
                         }), d3.max(values, (item) => {
@@ -26,13 +26,14 @@ let generateScales = () => {
                         })])
                         .range([padding, width-padding])
 
-    yAxisScale = d3.scaleTime()
+    yScale = d3.scaleTime()
                         .domain([d3.min(values, (item) => {
                             return new Date(item['Seconds'] * 1000)
                         }), d3.max(values, (item) => {
                             return new Date(item['Seconds'] * 1000)
                         })])
                         .range([padding, height-padding])
+
 }
 
 let drawCanvas = () => {
@@ -40,17 +41,53 @@ let drawCanvas = () => {
     svg.attr('height', height)
 }
 
-let drawBars = () => {
+let drawPoints = () => {
 
-    
+    svg.selectAll('circle')
+            .data(values)
+            .enter()
+            .append('circle')
+            .attr('class', 'dot')
+            .attr('r', '5')
+            .attr('data-xvalue', (item) => {
+                return item['Year']
+            })
+            .attr('data-yvalue', (item) => {
+                return new Date(item['Seconds'] * 1000)
+            })
+            .attr('cx', (item) => {
+                return xScale(item['Year'])
+            })         
+            .attr('cy', (item) => {
+                return yScale(new Date(item['Seconds'] * 1000))
+            })
+            .attr('fill', (item) => {
+                if(item['URL'] === ""){
+                    return 'green'
+                }else{
+                    return 'red'
+                }
+            })
+            .on('mouseover', (item) => {
+                tooltip.transition()
+                    .style('visibility', 'visible')
+                
+                tooltip.text(item['Year'])
+                
+                tooltip.attr('data-year', item['Year'])
+            })
+            .on('mouseout', (item) => {
+                tooltip.transition()
+                    .style('visibility', 'hidden')
+            })
 }
 
 let generateAxes = () => {
 
-    xAxis = d3.axisBottom(xAxisScale)
+    xAxis = d3.axisBottom(xScale)
                 .tickFormat(d3.format('d'))
 
-    yAxis = d3.axisLeft(yAxisScale)
+    yAxis = d3.axisLeft(yScale)
                 .tickFormat(d3.timeFormat('%M:%S'))
 
 
@@ -72,7 +109,7 @@ req.onload = () => {
     console.log(values)
     drawCanvas()
     generateScales()
-    drawCanvas()
+    drawPoints()
     generateAxes()
 }
 req.send()
