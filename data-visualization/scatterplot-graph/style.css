@@ -42,13 +42,14 @@ g{
     visibility: hidden;
     height: auto;
     width: auto;
-    margin-top: 10px;
+    margin-top: 5px;
     color: rgb(56, 58, 74);
     font-size: 24px;
+    margin-bottom: 5px;
 }
 
 #legend{
-    margin-top: 10px;
+    margin-top: 5px;
     color: rgb(56, 58, 74);
     font-size: 18px;
     text-align: center;
