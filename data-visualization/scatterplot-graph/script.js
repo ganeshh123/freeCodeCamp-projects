@@ -21,9 +21,9 @@ let generateScales = () => {
     xScale = d3.scaleLinear()
                         .domain([d3.min(values, (item) => {
                             return item['Year']
-                        }), d3.max(values, (item) => {
+                        }) - 1 , d3.max(values, (item) => {
                             return item['Year']
-                        })])
+                        }) + 1])
                         .range([padding, width-padding])
 
     yScale = d3.scaleTime()
@@ -72,7 +72,11 @@ let drawPoints = () => {
                 tooltip.transition()
                     .style('visibility', 'visible')
                 
-                tooltip.text(item['Year'])
+                if(item['Doping'] != ""){
+                    tooltip.text(item['Year'] + ' - ' + item['Name'] + ' - ' + item['Doping'])
+                }else{
+                    tooltip.text(item['Year'] + ' - ' + item['Name'] + ' - ' + 'No Allegations')
+                }
                 
                 tooltip.attr('data-year', item['Year'])
             })
