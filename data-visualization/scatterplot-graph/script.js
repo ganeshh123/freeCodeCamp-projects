@@ -25,6 +25,14 @@ let generateScales = () => {
                             return item['Year']
                         })])
                         .range([padding, width-padding])
+
+    yAxisScale = d3.scaleTime()
+                        .domain([d3.min(values, (item) => {
+                            return new Date(item['Seconds'] * 1000)
+                        }), d3.max(values, (item) => {
+                            return new Date(item['Seconds'] * 1000)
+                        })])
+                        .range([padding, height-padding])
 }
 
 let drawCanvas = () => {
@@ -40,13 +48,21 @@ let drawBars = () => {
 let generateAxes = () => {
 
     xAxis = d3.axisBottom(xAxisScale)
-                .tickFormat(d3.format("d"))
+                .tickFormat(d3.format('d'))
+
+    yAxis = d3.axisLeft(yAxisScale)
+                .tickFormat(d3.timeFormat('%M:%S'))
 
 
     svg.append('g')
         .call(xAxis)
         .attr('id', 'x-axis')
         .attr('transform', 'translate(0, ' + (height-padding) +')')
+
+    svg.append('g')
+        .call(yAxis)
+        .attr('id', 'y-axis')
+        .attr('transform','translate(' + padding + ', 0)')
 }
 
 
