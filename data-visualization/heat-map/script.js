@@ -18,6 +18,8 @@ let svg = d3.select('svg')
 
 let generateScales = () => {
     
+    xScale = d3.scaleTime()
+                .range([padding, width - padding])
 
 
 }
@@ -34,6 +36,13 @@ let drawCells = () => {
 
 let generateAxes = () => {
 
+    let xAxis = d3.axisBottom(xScale)
+    console.log(xAxis)
+
+    svg.append('g')
+        .call(xAxis)
+        .attr('id','x-axis')
+        .attr('transform', 'translate(0, ' + (height-padding) + ')')
     
 }
 
