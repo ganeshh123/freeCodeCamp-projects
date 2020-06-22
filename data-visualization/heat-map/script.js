@@ -37,7 +37,19 @@ let drawCells = () => {
         .enter()
         .append('rect')
         .attr('class','cell')
-        
+        .attr('fill', (item) => {
+            let variance = item['variance']
+            if(variance <= -4){
+                return 'SteelBlue'
+            }else if(variance <= 0){
+                return 'LightSteelBlue'
+            }else if(variance <= 2){
+                return 'Orange'
+            }else{
+                return 'Crimson'
+            }
+        })
+
     
 }
 
