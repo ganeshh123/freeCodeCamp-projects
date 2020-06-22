@@ -18,10 +18,11 @@ let svg = d3.select('svg')
 
 let generateScales = () => {
     
-    xScale = d3.scaleTime()
+    xScale = d3.scaleLinear()
                 .range([padding, width - padding])
 
-
+    yScale = d3.scaleTime()
+                .range([padding, height - padding])
 }
 
 let drawCanvas = () => {
@@ -31,18 +32,29 @@ let drawCanvas = () => {
 
 let drawCells = () => {
 
+    svg.selectAll('rect')
+        .data(values)
+        .enter()
+        .append('rect')
+        .attr('class','cell')
+        
     
 }
 
 let generateAxes = () => {
 
     let xAxis = d3.axisBottom(xScale)
-    console.log(xAxis)
+    let yAxis = d3.axisLeft(yScale)
 
     svg.append('g')
         .call(xAxis)
         .attr('id','x-axis')
         .attr('transform', 'translate(0, ' + (height-padding) + ')')
+
+    svg.append('g')
+        .call(yAxis)
+        .attr('id', 'y-axis')
+        .attr('transform', 'translate(' + padding + ', 0)')
     
 }
 
