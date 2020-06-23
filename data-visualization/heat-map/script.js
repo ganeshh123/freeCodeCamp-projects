@@ -50,11 +50,11 @@ let drawCells = () => {
         .attr('class','cell')
         .attr('fill', (item) => {
             let variance = item['variance']
-            if(variance <= -4){
+            if(variance <= -2){
                 return 'SteelBlue'
             }else if(variance <= 0){
                 return 'LightSteelBlue'
-            }else if(variance <= 2){
+            }else if(variance <= 1){
                 return 'Orange'
             }else{
                 return 'Crimson'
