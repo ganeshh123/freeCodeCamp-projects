@@ -15,6 +15,7 @@ let height = 600
 let padding = 60
 
 let svg = d3.select('svg')
+let tooltip = d3.select('#tooltip')
 
 let generateScales = () => {
 
@@ -89,6 +90,22 @@ let drawCells = () => {
         })
         .attr('x', (item) => {
             return xScale(item['year'])
+        })
+        .on('mouseover', (item) => {
+            tooltip.transition()
+                .style('visibility', 'visible')
+            
+            let monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+            ]
+        
+            tooltip.text(item['year'] + ' ' + monthNames[item['month'] -1 ] + ' : ' + item['variance'])
+
+            tooltip.attr('data-year', item['year'])
+        })
+        .on('mouseout', (item) => {
+            tooltip.transition()
+                .style('visibility', 'hidden')
         })
         
 }

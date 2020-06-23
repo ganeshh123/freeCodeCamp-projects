@@ -8,3 +8,9 @@ body{
 svg{
     background-color: whitesmoke;
 }
+
+#tooltip{
+    visibility: hidden;
+    height: auto;
+    width: auto;
+}
