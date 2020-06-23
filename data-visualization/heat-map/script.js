@@ -99,6 +99,7 @@ let generateAxes = () => {
                     .tickFormat(d3.format('d'))
 
     let yAxis = d3.axisLeft(yScale)
+                    .tickFormat(d3.timeFormat('%B'))
 
     svg.append('g')
         .call(xAxis)
