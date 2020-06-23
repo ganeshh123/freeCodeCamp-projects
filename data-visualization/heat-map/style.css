@@ -5,7 +5,7 @@
 }
 
 html{
-    height: 100%
+    min-height: 100%
 }
 
 body {
@@ -14,7 +14,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    min-height: 100%;
     color: #163D57
 }
 
@@ -23,6 +23,11 @@ svg{
     /*box-shadow: 0px 3px 15px rgba(0,0,0,0.2); */
     /*border-radius: 5px; */
     padding: 10px;
+}
+
+#canvas{
+    min-height: 600px;
+    min-width: 1200px;
 }
 
 
@@ -48,6 +53,7 @@ g{
     color: rgb(56, 58, 74);
     font-size: 18px;
     text-align: center;
+    min-height: 150px;
 }
 
 
