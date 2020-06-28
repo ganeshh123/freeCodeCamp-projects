@@ -4,8 +4,8 @@
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-html{
-    min-height: 100%
+html, body{
+    height: 100%
 }
 
 body {
@@ -14,8 +14,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100%;
-    color: #FDF1E7
+    color: #FDF1E7;
+    margin: none;
 }
 
 svg{
@@ -66,7 +66,7 @@ g{
     color: #FDF1E7;
     text-transform: uppercase;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 
 #description a{
