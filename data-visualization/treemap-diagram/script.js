@@ -40,9 +40,10 @@ let drawTreeMap = () => {
                                 .style('visibility', 'visible')
                     
                         let movieData = movie['data']
+                        let revenue = movieData['value'].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
                     
-                        tooltip.text(
-                            movieData['name'] + ' : $' + movieData['value']
+                        tooltip.html(
+                            '$ ' + revenue + '<hr />' +  movieData['name']
                         )
 
                         tooltip.attr('data-value', movieData['value'])
@@ -62,9 +63,9 @@ let drawTreeMap = () => {
                 }else if(category === 'Drama'){
                     return 'lightgreen'
                 }else if(category === 'Adventure'){
-                    return 'crimson'
+                    return 'coral'
                 }else if(category === 'Family'){
-                    return 'steelblue'
+                    return 'lightblue'
                 }else if(category === 'Animation'){
                     return 'pink'
                 }else if(category === 'Comedy'){
