@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Metric Imperial Converter</title>
+    <meta name="description" content="A cool thing made with HyperDev" />
+    <link
+      id="favicon"
+      rel="icon"
+      href="https://nesh.gq/icon.png"
+      type="image/x-icon"
+    />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./public/style.css" />
+  </head>
+  <body>
+    <h1>
+      Metric-Imperial Converter
+    </h1>
+    <form id="convertForm" class="border">
+      <input
+        type="text"
+        id="convertField"
+        name="input"
+        placeholder="3.1mi or 14.5km or 23lbs or 845kg or 76l or 98gal"
+        style="width: 200px"
+      />
+      <input id="convert" type="submit" value="Convert" />
+    </form>
+    <h4 id="result"></h4>
+      <pre id="jsonResult"></pre>
+     <p>by <a href="https://nesh.gq">Ganesh H</a></p>
+    <!-- Scripts -->
+    <script
+      src="https://code.jquery.com/jquery-2.2.1.min.js"
+      integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(function() {
+        $("#convertForm").submit(function() {
+          event.preventDefault();
+          $.ajax({
+            url: "/api/convert",
+            type: "get",
+            data: $("#convertForm").serialize(),
+            success: function(data) {
+              $("#result").text(data.string || data);
+              $("#jsonResult").css('visibility', 'visible')
+              $("#jsonResult").text(JSON.stringify(data));
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
