@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+</head>
+<body>
+    <h2 id='question'>What is your name?</h2>
+    <input type='text' name='name' id='name'>
+    <button id='submitname'
+        onclick ="document.querySelector('#response').textContent = 'Welcome ' + document.querySelector('#name').value"
+    >is my name.</button>
+    <p id='response'></p>
+</body>
+</html>
